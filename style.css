@@ -15,15 +15,75 @@ header {
   cursor: pointer;
 }
 
-#add-new-book-menu {
+#popup {
   position: fixed;
   background-color: orange;
-  top: 0px;
-  bottom: 0px;
-  right: calc(50% - 350px);
-  width: 600px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
   z-index: 1000;
-  /* visibility: hidden; */
+  font-size: 20px;
+  font-family: 'Ubuntu', sand-serif;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+#popup.active {
+  transition: 0.2s ease-out;
+  top: 50%;
+  visibility: visible;
+}
+
+#container.active {
+  pointer-events: none;
+  user-select: none;
+}
+
+#close-button {
+  float: right;
+  cursor: pointer;
+}
+
+#popup label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 7px;
+}
+
+#popup input[type="text"] {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #cdcdcd;
+  font-size: 25px;
+}
+
+#popup input[type="text"]:focus {
+  outline: none;
+}
+
+#finished-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#finished-box {
+  transform: scale(2);
+  margin-top: 10px;
+  margin-right: 7px;
+}
+
+#finished-box:focus {
+  outline: none;
+}
+
+#popup input[type="submit"] {
+  margin-top: 20px;
+  float: right;
+  padding: 10px;
 }
 
 #entries {

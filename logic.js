@@ -1,15 +1,15 @@
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-	this.info = () => {
-		let formattedInfoStr = `${this.title} by ${author}, ${pages} pages, `;
-		formattedInfoStr += read ? 'read' : 'not read yet';
-		return formattedInfoStr;
-	}
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+  this.info = () => {
+    let formattedInfoStr = `${this.title} by ${author}, ${pages} pages, `;
+    formattedInfoStr += read ? 'read' : 'not read yet';
+    return formattedInfoStr;
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -44,7 +44,7 @@ function makeBookDOMElement(book) {
   }
 
   bookNode.classList.add('book');
-  
+
   bookNode.appendChild(titleNode);
   bookNode.appendChild(authorNode);
   bookNode.appendChild(pagesNode);
@@ -54,17 +54,58 @@ function makeBookDOMElement(book) {
 }
 
 function updateEntriesList(entriesListDOM, bookList) {
-  bookList.forEach( book => { 
+  entriesListDOM.innerHTML = '';
+  bookList.forEach(book => {
     let newBook = makeBookDOMElement(book);
     entriesListDOM.append(newBook);
   })
 }
 
-let libraryEntries = document.getElementById('entries');
+function clearFields() {
+  titleBox.value = "";
+  authorBox.value = "";
+  pagesBox.value = "";
+  finishedCheckbox.checked = false;
+}
 
-addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
-addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
-addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
-addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
+function togglePopup() {
+  popup.classList.toggle('active');
+  container.classList.toggle('active');
+}
+
+const libraryEntries = document.getElementById('entries');
+const addBtn = document.getElementById('add-book-icon');
+const closeBtn = document.getElementById('close-button');
+const popup = document.getElementById('popup');
+const container = document.getElementById('container');
+const titleBox = document.getElementById('title-box');
+const authorBox = document.getElementById('author-box');
+const pagesBox = document.getElementById('pages-box');
+const finishedCheckbox = document.getElementById('finished-box');
+const addBookForm = document.querySelector('#popup form');
+
+addBtn.addEventListener('click', togglePopup);
+
+closeBtn.addEventListener('click', e => {
+  togglePopup();
+  clearFields();
+})
+
+addBookForm.onsubmit = e => {
+  e.preventDefault();
+  let title = titleBox.value;
+  let author = authorBox.value;
+  let pages = pagesBox.value;
+  let read = finishedCheckbox.checked;
+  togglePopup();
+  clearFields();
+  addBookToLibrary(title, author, pages, read);
+  updateEntriesList(libraryEntries, myLibrary);
+}
+
+// addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
+// addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
+// addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
+// addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 188, true);
 
 updateEntriesList(libraryEntries, myLibrary);

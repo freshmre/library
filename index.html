@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="reset.css">
@@ -7,94 +8,39 @@
 </head>
 
 <body>
-  <div id="add-new-book-menu">
+  <div id="container">
+    <header>
+      <p>Library</p>
+      <img id="add-book-icon" src="assets/library_add_black_24dp.svg" alt="Add new book to library">
+    </header>
+    <div id="entries">
+    </div>
   </div>
-  <header>
-    <p>Library</p>
-    <img id="add-book-icon" src="assets/library_add_black_24dp.svg" alt="Add new book to library">
-  </header>
-  <div id="entries">
-    <!--
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read read">finished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188 pages</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    <div class="book" id="book1">
-      <div class="book-title">Industrial Society And It's Future</div>
-      <div class="book-author">Theodore J. Kaczynski</div>
-      <div class="pages">188</div>
-      <div class="is-read unread">unfinished</div>
-    </div>
-    -->
+  <div id="popup">
+    <img src="assets/close_black_24dp.svg" alt="Close dialogue box" id="close-button">
+    <form action="">
+      <div class="add-book-popup-form">
+        <label for="book-title">Title</label>
+        <input type="text" name="book-title" id="title-box" required>
+      </div>
+      <div class="add-book-popup-form">
+        <label for="book-author">Author</label>
+        <input type="text" name="book-author" id="author-box" required>
+      </div>
+      <div class="add-book-popup-form">
+        <label for="book-pages">Pages</label>
+        <input type="text" name="book-pages" id="pages-box" required>
+      </div>
+      <div class="add-book-popup-form" id="finished-wrapper">
+        <label for="book-finished">Finished?</label>
+        <input type="checkbox" name="book-finished" id="finished-box">
+      </div>
+      <div class="add-book-popup-form">
+        <input type="submit" value="Add">
+      </div>
+    </form>
   </div>
   <script src="logic.js"></script>
 </body>
+
 </html>
