@@ -85,6 +85,7 @@ function toggleReadStatus(e) {
   indexToChange = e.srcElement.parentElement.dataset.index;
   myLibrary[indexToChange].read = !myLibrary[indexToChange].read;
   updateEntriesList(libraryEntries, myLibrary);
+  storeToLS();
 }
 
 function clearFields() {
