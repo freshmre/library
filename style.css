@@ -62,7 +62,7 @@ header {
   font-size: 25px;
 }
 
-#popup input[type="text"]:focus {
+#popup input:focus {
   outline: none;
 }
 

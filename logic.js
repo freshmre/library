@@ -1,20 +1,21 @@
-let myLibrary = [];
+let existingBooks = JSON.parse(localStorage.getItem('library'));
+let myLibrary = existingBooks || [];
+
+function storeToLS() {
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = () => {
-    let formattedInfoStr = `${this.title} by ${author}, ${pages} pages, `;
-    formattedInfoStr += read ? 'read' : 'not read yet';
-    return formattedInfoStr;
-  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
   bookToAdd = new Book(title, author, pages, read);
   myLibrary.push(bookToAdd);
+  storeToLS();
 }
 
 function makeBookDOMElement(book) {
@@ -77,6 +78,7 @@ function deleteBook(e) {
   indexToDelete = e.srcElement.parentElement.dataset.index;
   myLibrary.splice(indexToDelete, 1);
   updateEntriesList(libraryEntries, myLibrary);
+  storeToLS();
 }
 
 function toggleReadStatus(e) {
@@ -100,6 +102,7 @@ function togglePopup() {
 function deleteAllBooks() {
   myLibrary = [];
   updateEntriesList(libraryEntries, myLibrary);
+  storeToLS();
 }
 
 const libraryEntries = document.getElementById('entries');
@@ -134,9 +137,11 @@ addBookForm.onsubmit = e => {
   updateEntriesList(libraryEntries, myLibrary);
 }
 
-addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 140, true);
-addBookToLibrary('Electronics Made Simple', 'Henry Jacobowitz', 191, false);
-addBookToLibrary('Fundamentals of Analytical Chemistry', 'Donald M. West', 1165, false);
-addBookToLibrary('Mechanics of Materials', 'Russell Hibbeler', 739, false);
+if (myLibrary.length === 0) {
+  addBookToLibrary('Industrial Society and Its Future', 'Theodore John Kaczynski', 140, true);
+  addBookToLibrary('Electronics Made Simple', 'Henry Jacobowitz', 191, false);
+  addBookToLibrary('Fundamentals of Analytical Chemistry', 'Donald M. West', 1165, false);
+  addBookToLibrary('Mechanics of Materials', 'Russell Hibbeler', 739, false);
+}
 
 updateEntriesList(libraryEntries, myLibrary);
